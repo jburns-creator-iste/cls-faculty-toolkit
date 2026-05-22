@@ -263,8 +263,11 @@ body{font-family:'Poppins',sans-serif;background:var(--gray-50);color:var(--gray
         <tr><td>Avoid exclamation points</td><td>B2B copy stays confident, not excited.</td></tr>
         <tr><td>Write "Edtech," not "EdTech"</td><td>Lowercase t, always.</td></tr>
         <tr><td>State the idea directly</td><td>Skip openers that delay the point. Get there in the first sentence.</td></tr>
-        <tr><td>Avoid AI-pattern copy constructions</td><td>Skip the "whether you're X or Y" structure and three-part buzzword lists. Write like a person.</td></tr>
+        <tr><td>Avoid AI-pattern copy constructions</td><td>Skip "Whether you are X or Y," three-part buzzword lists, and the false pivot structure. Write like a person.</td></tr>
+        <tr><td>Avoid the false pivot</td><td>Never write "Not because X, but because Y" or "It's not about X — it's about Y." These are the most recognizable AI prose patterns and read as synthetic immediately.</td></tr>
+        <tr><td>Avoid these specific constructions</td><td>"Here's the thing:" / "And that's the point." / "That's the work." / "This is what X actually looks like." / "Less X, more Y" / "The question isn't X. It's Y." / "What if X wasn't about Y?" — all of these signal AI-generated copy. Rewrite any sentence that uses them.</td></tr>
         <tr><td>The CTA is always a conversation</td><td>Point to iste-ascd.org/custom (awareness) or iste-ascd.org/cls-contact (consultation). Never a hard sell.</td></tr>
+        <tr><td>Pre-service CTAs invite engagement, not clicks</td><td>End pre-service posts with a question that invites replies — "Is anyone else seeing this?" or "What are you navigating in your district?" — not a product link.</td></tr>
       </tbody>
     </table>
   </div>
@@ -564,7 +567,7 @@ const typeHints = {
   awareness:    '<strong>Awareness &amp; Demand Generation:</strong> Builds recognition of Custom Learning Services without pitching it directly. Leads with a problem or tension you are seeing in districts. Custom Learning Services appears as a natural, credible endpoint.',
   thought:      '<strong>Thought Leadership:</strong> Amplifies your expertise and ideas. Use for a podcast appearance, blog post, book, speaking engagement, or a strong original point of view. The idea leads — the promotional context follows.',
   leadgen:      '<strong>Lead Generation:</strong> Moves district leaders toward a 15-minute consultation. Leads with a proof point or result. The CTA is always low-friction: schedule a short conversation at iste-ascd.org/cls-contact.',
-  preservice:   '<strong>Pre-Service:</strong> Posted before you deliver an engagement. Communicates what you are preparing for, the problem being solved, and the expertise you bring. Energized and purposeful in tone.',
+  preservice:   '<strong>Pre-Service:</strong> Posted before you deliver an engagement. Forward-looking and genuinely excited — "I am heading into this and I cannot wait" energy. Names the problem, signals your expertise, and ends with an engagement question that invites replies — not a product link.',
   onsite:       '<strong>On-Site:</strong> Posted while you are actively delivering professional development. Captures a real, specific moment from the room — a question, an observation, a realization. Immediate and authentic.',
   afterservice: '<strong>After Services:</strong> Posted after completing an engagement. Reflective, energized, and human. Leads with a specific story or aha moment. Includes your personal why. Optional mention of continued work.',
 };
@@ -654,10 +657,10 @@ const promptFields = {
     { id:'l_f3', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. I recently completed a three-year engagement in Texas focused on AI readiness — student outcomes improved significantly in the second year...', rows:3 },
   ],
   preservice: [
-    { id:'ps_f1', label:'What are you preparing for?', ph:'e.g. A three-day differentiated instruction workshop with 80 teachers in a Title I district next week...' },
-    { id:'ps_f2', label:'What problem or challenge is this work designed to address?', ph:'e.g. Teachers are being asked to differentiate instruction without ever having been taught how to assess for student readiness...' },
-    { id:'ps_f3', label:'What expertise or perspective do you bring to this work?', ph:'e.g. I have spent 20 years working alongside Carol Ann Tomlinson on DI implementation in high-need districts...' },
-    { id:'ps_f4', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. This is the start of a two-year engagement — we are building something that will outlast the professional development itself...', rows:3 },
+    { id:'ps_f1', label:'What are you preparing for?', ph:'e.g. A three-day AI policy-building engagement with district leadership next week...' },
+    { id:'ps_f2', label:'What problem or challenge is this work designed to address?', ph:'e.g. Teachers and students are both using AI but there are no guardrails, no shared ethics, and no framework for what good use actually looks like...' },
+    { id:'ps_f3', label:'What expertise or perspective do you bring to this work?', ph:'e.g. I have spent 15 years helping districts build AI-ready cultures — the policy work always has to come before the tool adoption...' },
+    { id:'ps_f4', label:'How do you want to end the post? Pick a direction.', ph:'e.g. Ask a question ("Is anyone else seeing this?") / Invite comments ("What are you navigating?") / Offer help ("If this sounds familiar, reach out")...', rows:3 },
   ],
   onsite: [
     { id:'os_f1', label:'What topic or content area are you delivering today?', ph:'e.g. AI readiness, differentiated instruction, curriculum design...' },
@@ -696,8 +699,22 @@ CORE COPY RULES — APPLY ALL WITHOUT EXCEPTION:
 - Limit em dashes. Use a comma or period instead.
 - Do not open with a rhetorical question. State the idea directly.
 - Do not use "transformational," "empower," "innovative," or "game-changer."
-- Do not use AI-pattern constructions like "Whether you are X or Y."
-- Do not use passive benefit openers like "You will walk away with..."`;
+- Do not use passive benefit openers like "You will walk away with..."
+
+BLACKLISTED AI PROSE PATTERNS — NEVER USE ANY OF THESE:
+These are the most recognizable signals of AI-generated copy. Their presence immediately undermines the practitioner voice. Do not use them under any circumstances, and do not use structural variants of them either.
+- "Not because X, but because Y" — the false pivot. The single most common AI prose tell. Banned entirely.
+- "It's not about X — it's about Y" — same false pivot structure. Banned.
+- "This is what X actually looks like." — AI cliche. Banned.
+- "That's the work." — empty closer. Banned.
+- "And that's the point." — empty closer. Banned.
+- "Here's the thing:" — filler opener. Banned.
+- "The question isn't X. It's Y." — false pivot variant. Banned.
+- "Less X, more Y" — formulaic contrast. Banned.
+- "What if X wasn't about Y?" — rhetorical setup. Banned.
+- "Whether you are X or Y" — AI-pattern construction. Banned.
+- Three-part lists of abstract nouns used as a closing flourish (e.g. "trust, clarity, and purpose").
+If any of these appear in your draft, rewrite the sentence entirely. The underlying sentence structure is the problem, not just the phrase.`;
 
 const platformSpec = {
   linkedin: `PLATFORM — LINKEDIN:
@@ -709,7 +726,9 @@ Write a tight 3-post thread. First post under 270 characters, works as a standal
 };
 
 const warmToneNote = `TONE NOTE FOR THIS POST TYPE:
-This post can be warmer and more personal than standard B2B copy. One exclamation point is acceptable if it reflects genuine enthusiasm. Write with human energy — this is a practitioner who loves this work and is not afraid to show it. Still no filler phrases, no corporate-speak, no generic claims.`;
+This post can be warmer and more personal than standard B2B copy. One or two exclamation points are acceptable and encouraged — this is a practitioner who genuinely loves this work and is about to do something meaningful. Write with real human energy and forward-looking excitement. Still no filler phrases, no corporate-speak, no generic claims. The enthusiasm must be earned and specific — not performed.
+
+CRITICAL: The blacklisted AI prose patterns above apply here too. Warmth and excitement do not give permission to use false pivots, empty closers, or formulaic contrast structures. Energized writing is still precise writing.`;
 
 const standardToneNote = `TONE NOTE:
 No exclamation points. Confident and peer-level, not promotional. The voice is warm but measured — a respected practitioner, not an excited brand.`;
@@ -743,9 +762,19 @@ function buildCurrentPrompt() {
     outputBlock += ` Lead with a specific result or observation — not the product. If the author's additional context contains a proof point, lead with that. Otherwise draw on Southfield.`;
   } else if (promptType === 'preservice') {
     toneNote = warmToneNote;
-    taskBlock = `YOUR TASK — PRE-SERVICE POST:\nWrite a ${pl} post from a faculty member who is preparing to deliver a professional development engagement. The tone should feel energized and purposeful — this is a practitioner who is genuinely invested in the work ahead. The post should communicate what they are preparing for, the problem they are working to solve, and the expertise they bring to it. It is not a logistics announcement. It is an expression of professional purpose and anticipation.`;
+    taskBlock = `YOUR TASK — PRE-SERVICE POST:
+Write a ${pl} post from a faculty member who is about to deliver a professional development engagement and is genuinely excited about it. This post should radiate forward-looking energy and personal investment. The voice is "I am heading into this and I cannot wait" — not because the work is easy, but because the problem is real and the author is deeply equipped to help with it.
+
+The post should do three things: name what the author is about to go do, make the reader feel the weight and urgency of the problem being addressed, and signal the author's specific expertise and perspective on it. It is not a logistics announcement. It is a practitioner expressing genuine anticipation for meaningful work.
+
+CRITICAL FOR THIS POST TYPE — THE CTA:
+Pre-service posts do NOT end with a product link. They end with an invitation to engage. The goal is conversation and connection, not conversion. Choose the most natural close from these options depending on the content:
+- If the problem named is widespread: end with "Is anyone else seeing this in their district?" or "What are you navigating around this right now?"
+- If the author's expertise is central: end with "If this is the tension your district is sitting in, I would love to hear what you are seeing — drop it in the comments."
+- If there is a natural offer of help: end with "If this sounds familiar, feel free to reach out — happy to think through it with you."
+Custom Learning Services or ISTE+ASCD should NOT appear in pre-service posts unless it fits completely naturally as a one-line mention at the very end. The post is about the practitioner, not the program.`;
     inputBlock += `What I am preparing for: ${vals.ps_f1||na}\nThe problem or challenge this work is designed to address: ${vals.ps_f2||na}\nThe expertise or perspective I bring: ${vals.ps_f3||na}\nAdditional context: ${vals.ps_f4||none}`;
-    outputBlock += ` The post should feel warm, energized, and human. Lead with the problem being solved or the work being done — not the logistics. Express genuine investment in the outcome. Custom Learning Services or ISTE+ASCD can be mentioned lightly at the end.`;
+    outputBlock += ` The post must feel like genuine, specific excitement — not performed enthusiasm. Lead with what the author is about to do and the problem they are going to work on. Build to the author's specific expertise or angle. Close with an engagement question that invites replies, not a product link. If the author's inputs are rich and specific, lean into the details — specificity is what makes excitement credible.`;
   } else if (promptType === 'onsite') {
     taskBlock = `YOUR TASK — ON-SITE POST (WHILE DELIVERING PROFESSIONAL DEVELOPMENT):\nWrite a ${pl} post that captures a real, specific moment from an active professional development session. The author is on-site right now. This post is about what is happening in the room — a question that came up, an observation about where teachers actually are, a realization that reframes the challenge. Immediate and authentic. The post does not need to mention Custom Learning Services prominently. A light CTA to iste-ascd.org/custom at the end is appropriate.`;
     inputBlock += `Topic or content area being delivered: ${vals.os_f1||na}\nThe moment, question, or observation that stood out: ${vals.os_f2||na}\nAdditional context: ${vals.os_f3||none}`;
