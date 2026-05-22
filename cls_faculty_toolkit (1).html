@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLS Faculty Amplification Toolkit — ISTE+ASCD</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Literata:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-blue:#0B2589; --cyan:#28A8D4; --light-blue:#BFE5F1;
+  --navy:#0C1F39; --orange:#FAA73D; --white:#FFFFFF;
+  --gray-50:#F7F8FA; --gray-100:#EEF0F4; --gray-200:#D8DCE6;
+  --gray-400:#8E96A8; --gray-600:#4A5568; --gray-800:#1A2035;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--gray-50);color:var(--gray-800);min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;border-bottom:2px solid var(--cyan)}
+.topbar-logo{font-size:13px;font-weight:700;color:var(--white);letter-spacing:.04em;text-transform:uppercase}
+.topbar-logo span{color:var(--cyan)}
+.topbar-tag{font-size:11px;font-weight:500;color:var(--light-blue);letter-spacing:.08em;text-transform:uppercase}
+
+/* HERO */
+.hero{background:var(--navy);padding:3.5rem 2rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:var(--deep-blue);opacity:.7}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:var(--cyan);opacity:.1}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem}
+.hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:.4rem}
+.hero h1 span{color:var(--cyan)}
+.hero-sub{font-size:14px;color:var(--light-blue);max-width:520px;margin:.75rem auto 0;line-height:1.7;font-weight:400}
+
+/* NAV */
+.nav-wrap{background:var(--deep-blue);padding:0 2rem;overflow-x:auto;scrollbar-width:none;position:sticky;top:52px;z-index:100}
+.nav-wrap::-webkit-scrollbar{display:none}
+.nav-tabs{display:flex;max-width:1000px;margin:0 auto}
+.nav-tab{padding:13px 18px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.5);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;user-select:none}
+.nav-tab:hover{color:rgba(255,255,255,.85)}
+.nav-tab.active{color:var(--white);border-bottom-color:var(--cyan)}
+
+/* LAYOUT */
+.main{max-width:1000px;margin:0 auto;padding:2.5rem 2rem 5rem}
+.section{display:none}.section.active{display:block}
+
+/* SECTION INTRO */
+.section-intro{margin-bottom:2rem}
+.section-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+.section-title{font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:8px}
+.section-desc{font-size:14px;color:var(--gray-600);line-height:1.7;max-width:660px}
+
+/* UTILITY */
+.card{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;margin-bottom:1.25rem}
+.note-box{background:var(--light-blue);border-left:4px solid var(--cyan);border-radius:0 8px 8px 0;padding:12px 18px;font-size:13px;color:var(--navy);line-height:1.6;margin:1rem 0}
+.divider{border:none;border-top:1px solid var(--gray-200);margin:2rem 0}
+.subhead{font-size:13px;font-weight:700;color:var(--deep-blue);letter-spacing:.05em;text-transform:uppercase;margin-bottom:1rem}
+.copy-btn{background:var(--deep-blue);color:var(--white);border:none;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;transition:background .15s,transform .1s;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.copy-btn:hover{background:var(--navy)}
+.copy-btn.copied{background:#1a7a4a}
+.copy-btn:active{transform:scale(.97)}
+
+/* SUPPORT */
+.support-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem}
+.support-card{border-radius:10px;overflow:hidden;border:1px solid var(--gray-200)}
+.support-head{padding:20px 24px 16px}
+.support-head.joe{background:var(--deep-blue)}.support-head.amy{background:var(--navy)}
+.support-name{font-size:19px;font-weight:800;color:var(--white);margin-bottom:3px}
+.support-role{font-size:12px;color:var(--light-blue);font-weight:500}
+.support-body{background:var(--white);padding:16px 24px}
+.support-body h5{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px}
+.support-body ul{list-style:none}
+.support-body li{font-size:13px;color:var(--gray-600);padding:6px 0;border-bottom:1px solid var(--gray-100);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.support-body li:last-child{border-bottom:none}
+.support-body li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:5px}
+
+/* GUIDELINES TABLE */
+.g-table{width:100%;border-collapse:collapse;font-size:14px}
+.g-table thead tr{background:var(--navy)}
+.g-table thead th{padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
+.g-table tbody tr:nth-child(odd){background:var(--gray-50)}
+.g-table tbody tr:nth-child(even){background:var(--white)}
+.g-table td{padding:12px 16px;vertical-align:top;border-bottom:1px solid var(--gray-100);line-height:1.6}
+.g-table td:first-child{font-weight:600;color:var(--deep-blue);width:32%}
+.g-table td:last-child{color:var(--gray-600)}
+
+/* TIMING TABLE */
+.t-table{width:100%;border-collapse:collapse;font-size:13px}
+.t-table thead tr{background:var(--navy)}
+.t-table thead th{padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
+.t-table td{padding:14px 16px;vertical-align:top;border-bottom:1px solid var(--gray-200);line-height:1.65}
+.t-table td:first-child{font-weight:700;color:var(--deep-blue);background:var(--light-blue);width:130px}
+.t-table td:nth-child(2){font-weight:600;color:var(--navy);width:140px}
+.t-table td:last-child{color:var(--gray-600)}
+
+/* PLATFORM TOGGLE */
+.platform-toggle-wrap{display:flex;align-items:center;gap:12px;margin-bottom:2rem;background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:16px 20px}
+.platform-toggle-label{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
+.platform-btns{display:flex;gap:8px}
+.p-btn{padding:7px 18px;border-radius:20px;border:1.5px solid var(--gray-200);background:transparent;font-size:12px;font-weight:600;font-family:'Poppins',sans-serif;color:var(--gray-600);cursor:pointer;transition:all .15s}
+.p-btn:hover{border-color:var(--cyan);color:var(--deep-blue)}
+.p-btn.active{background:var(--deep-blue);border-color:var(--deep-blue);color:var(--white)}
+
+/* PROMPT CARDS */
+.prompt-card{margin-bottom:1.75rem;border:1px solid var(--gray-200);border-radius:10px;overflow:hidden}
+.prompt-label{background:var(--deep-blue);color:var(--white);padding:13px 20px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:10px}
+.p-num{background:var(--cyan);color:var(--navy);font-size:11px;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fw-head{background:var(--gray-100);padding:8px 20px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);border-bottom:1px solid var(--gray-200)}
+.fw-fields{background:var(--white);padding:16px 20px;border-bottom:1px solid var(--gray-200);display:flex;flex-direction:column;gap:12px}
+.fw-field label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:5px}
+.fw-field label span{color:var(--deep-blue)}
+.fw-field textarea{width:100%;border:1px solid var(--gray-200);border-radius:6px;padding:9px 12px;font-size:13px;font-family:'Poppins',sans-serif;color:var(--gray-800);line-height:1.5;resize:vertical;min-height:58px;transition:border-color .15s}
+.fw-field textarea:focus{outline:none;border-color:var(--cyan)}
+.fw-field textarea::placeholder{color:var(--gray-400)}
+.ai-head{background:var(--light-blue);padding:8px 20px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--deep-blue);border-top:2px solid var(--cyan);display:flex;align-items:center;justify-content:space-between}
+.ai-output{background:var(--white);padding:20px 24px;font-family:'Literata',Georgia,serif;font-size:13.5px;line-height:1.85;color:var(--gray-600);font-style:italic;white-space:pre-wrap;min-height:320px;border-top:1px solid var(--gray-100)}
+.ai-output .user-val{color:var(--deep-blue);font-style:normal;font-weight:600;background:rgba(40,168,212,.1);border-radius:3px;padding:0 3px}
+
+/* EMAIL SECTION */
+.email-scenario-tabs{display:flex;gap:8px;margin-bottom:1.5rem}
+.e-tab{padding:8px 20px;border-radius:20px;border:1.5px solid var(--gray-200);background:transparent;font-size:12px;font-weight:600;font-family:'Poppins',sans-serif;color:var(--gray-600);cursor:pointer;transition:all .15s}
+.e-tab:hover{border-color:var(--cyan);color:var(--deep-blue)}
+.e-tab.active{background:var(--deep-blue);border-color:var(--deep-blue);color:var(--white)}
+.email-scenario{display:none}.email-scenario.active{display:block}
+.email-fields{background:var(--white);padding:16px 20px;border-bottom:1px solid var(--gray-200);display:flex;flex-direction:column;gap:12px}
+.email-output-wrap{background:var(--white);padding:16px 20px}
+.email-output{font-family:'Literata',Georgia,serif;font-size:13px;line-height:1.85;color:var(--gray-600);font-style:italic;white-space:pre-wrap;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px;padding:16px 18px;min-height:120px}
+.email-output .user-val{color:var(--deep-blue);font-style:normal;font-weight:600;background:rgba(40,168,212,.1);border-radius:3px;padding:0 3px}
+.email-head{background:var(--deep-blue);padding:13px 20px;display:flex;align-items:center;justify-content:space-between}
+.email-head.navy-bg{background:var(--navy)}
+.email-title{font-size:13px;font-weight:700;color:var(--white)}
+.email-copy-row{display:flex;align-items:center;justify-content:flex-end;padding:10px 20px;border-top:1px solid var(--gray-100);background:var(--gray-50)}
+
+/* BRAND KIT */
+.swatch-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:1.5rem}
+.swatch{border-radius:8px;overflow:hidden;border:1px solid var(--gray-200)}
+.swatch-color{height:56px}
+.swatch-info{padding:8px 10px;background:var(--white)}
+.swatch-name{font-size:12px;font-weight:600;color:var(--navy)}
+.swatch-hex{font-size:11px;color:var(--gray-400);margin-top:2px}
+.font-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.font-card{background:var(--white);border:1px solid var(--gray-200);border-radius:8px;padding:16px}
+.font-card-name{font-size:13px;font-weight:700;color:var(--deep-blue);margin-bottom:4px}
+.font-card-use{font-size:12px;color:var(--gray-600);margin-bottom:8px;line-height:1.5}
+.font-card-link{font-size:11px;color:var(--cyan);text-decoration:none}
+.font-card-link:hover{text-decoration:underline}
+.hashtag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.hashtag-group h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--light-blue)}
+.hashtag-pill{display:inline-block;background:var(--light-blue);color:var(--deep-blue);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin:3px 3px 3px 0;font-family:monospace;letter-spacing:-.02em}
+
+/* APPENDIX */
+.exemplar-card{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;margin-bottom:1.25rem}
+.ex-head{padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
+.ex-head.blue{background:var(--deep-blue)}.ex-head.navy{background:var(--navy)}.ex-head.light{background:var(--light-blue)}.ex-head.gray{background:var(--gray-100)}
+.ex-type{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ex-head.blue .ex-type,.ex-head.navy .ex-type{color:var(--light-blue)}
+.ex-head.light .ex-type,.ex-head.gray .ex-type{color:var(--deep-blue)}
+.ex-body{padding:20px 24px;font-family:'Literata',Georgia,serif;font-size:14px;line-height:1.8;color:var(--gray-600);white-space:pre-wrap}
+.ex-note{background:var(--light-blue);border-left:3px solid var(--cyan);padding:10px 16px;font-size:12px;color:var(--navy);font-style:italic;line-height:1.6}
+.dodont-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.dd-col h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px}
+.dd-col.good h4{background:var(--deep-blue);color:var(--white);border-radius:8px 8px 0 0}
+.dd-col.bad h4{background:var(--navy);color:var(--light-blue);border-radius:8px 8px 0 0}
+.dd-item{font-family:'Literata',Georgia,serif;font-size:13px;font-style:italic;line-height:1.65;padding:12px 16px;border-bottom:1px solid var(--gray-200)}
+.dd-col.good .dd-item{background:var(--light-blue);color:var(--navy)}
+.dd-col.bad .dd-item{background:var(--gray-100);color:var(--gray-400)}
+
+@media(max-width:640px){
+  .support-grid{grid-template-columns:1fr}
+  .swatch-grid{grid-template-columns:repeat(3,1fr)}
+  .font-grid{grid-template-columns:1fr}
+  .hashtag-grid{grid-template-columns:1fr}
+  .dodont-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">iste<span>+</span>ascd</div>
+  <div class="topbar-tag">Custom Learning Services</div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Faculty Toolkit · ISTE Conference</div>
+  <h1>Faculty Amplification<br><span>& Promotion Guide</span></h1>
+  <p class="hero-sub">Everything you need to promote Custom Learning Services, post on-site, and follow up with district leaders and teachers.</p>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showTab('support')">00 · Support</div>
+    <div class="nav-tab" onclick="showTab('guidelines')">01 · Guidelines</div>
+    <div class="nav-tab" onclick="showTab('timing')">02 · Timing</div>
+    <div class="nav-tab" onclick="showTab('prompts')">03 · Prompts</div>
+    <div class="nav-tab" onclick="showTab('email')">04 · Email</div>
+    <div class="nav-tab" onclick="showTab('brand')">05 · Brand Kit</div>
+    <div class="nav-tab" onclick="showTab('appendix')">A · Appendix</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ── 00 SUPPORT ─────────────────────────────────────────────────────── -->
+<div class="section active" id="support">
+  <div class="section-intro">
+    <div class="section-num">Section 00</div>
+    <div class="section-title">Your Support Team</div>
+    <p class="section-desc">You don't need to figure this out alone. Before you post, generate content, or follow up with a district leader, here are your two contacts.</p>
+  </div>
+  <div class="support-grid">
+    <div class="support-card">
+      <div class="support-head joe">
+        <div class="support-name">Joe Burns</div>
+        <div class="support-role">Senior Marketing Manager, ISTE+ASCD</div>
+      </div>
+      <div class="support-body">
+        <h5>Reach out for</h5>
+        <ul>
+          <li>Post feedback or copy review before you publish</li>
+          <li>Asset and graphic requests</li>
+          <li>Questions about this toolkit</li>
+          <li>Flagging a district leader who responded to your post or email</li>
+        </ul>
+      </div>
+    </div>
+    <div class="support-card">
+      <div class="support-head amy">
+        <div class="support-name">Amy Neloms</div>
+        <div class="support-role">Custom Learning Services</div>
+      </div>
+      <div class="support-body">
+        <h5>Reach out for</h5>
+        <ul>
+          <li>Questions about the Custom Learning Services offer</li>
+          <li>Content guidance for a specific engagement</li>
+          <li>Faculty-specific context or talking points</li>
+          <li>Anything you're unsure is on-message</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="note-box">The first step with any interested district leader is always a conversation, not a proposal. If someone responds to your post or email, flag it to Joe Burns before replying to any scope or pricing questions.</div>
+</div>
+
+<!-- ── 01 GUIDELINES ──────────────────────────────────────────────────── -->
+<div class="section" id="guidelines">
+  <div class="section-intro">
+    <div class="section-num">Section 01</div>
+    <div class="section-title">Copy Guidelines</div>
+    <p class="section-desc">Apply these to every post, comment, caption, and email.</p>
+  </div>
+  <div class="card">
+    <table class="g-table">
+      <thead><tr><th>Guideline</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Spell out full names on first reference</td><td>Custom Learning Services, not CLS. ISTE+ASCD, not the acronym alone.</td></tr>
+        <tr><td>Lead with the problem, not the solution</td><td>The district's tension or challenge comes first. Custom Learning Services comes second.</td></tr>
+        <tr><td>Write from a partnership lens</td><td>"We build alongside your team" over "our program offers." Focus on relationship, not product.</td></tr>
+        <tr><td>Write in your own practitioner voice</td><td>Posts should sound like a thoughtful expert in the field, not a brand announcement.</td></tr>
+        <tr><td>Be specific, not general</td><td>"40 teachers in Southfield" lands harder than "districts across the country."</td></tr>
+        <tr><td>One idea per post</td><td>Don't combine an awareness angle and a consultation ask in the same post. Pick one.</td></tr>
+        <tr><td>Lead with the idea, not a question</td><td>State your observation or point of view directly. Avoid rhetorical openers.</td></tr>
+        <tr><td>Limit em dashes</td><td>Use a comma, a period, or rewrite the sentence instead.</td></tr>
+        <tr><td>Avoid exclamation points</td><td>B2B copy stays confident, not excited.</td></tr>
+        <tr><td>Write "Edtech," not "EdTech"</td><td>Lowercase t, always.</td></tr>
+        <tr><td>State the idea directly</td><td>Skip openers that delay the point. Get there in the first sentence.</td></tr>
+        <tr><td>Avoid AI-pattern copy constructions</td><td>Skip the "whether you're X or Y" structure and three-part buzzword lists. Write like a person.</td></tr>
+        <tr><td>The CTA is always a conversation</td><td>Point to iste-ascd.org/custom (awareness) or iste-ascd.org/cls-contact (consultation). Never a hard sell.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── 02 TIMING ──────────────────────────────────────────────────────── -->
+<div class="section" id="timing">
+  <div class="section-intro">
+    <div class="section-num">Section 02</div>
+    <div class="section-title">Timing Guide</div>
+    <p class="section-desc">Three windows. Three different jobs. Use all three.</p>
+  </div>
+  <div class="card">
+    <table class="t-table">
+      <thead><tr><th>When</th><th>Goal</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Day before</td><td>Set the stage</td>
+          <td>"Tomorrow at [school or district], I am working with teachers on..." builds anticipation and signals expertise.<br><br><strong>Link:</strong> iste-ascd.org/custom</td>
+        </tr>
+        <tr>
+          <td>Day of session</td><td>In the room</td>
+          <td>Post a photo or quick observation from inside the session. Use the on-site prompt in Section 03. Real and specific performs best.<br><br><strong>Link:</strong> iste-ascd.org/custom</td>
+        </tr>
+        <tr>
+          <td>After session</td><td>Proof + CTA</td>
+          <td>Post a reflection using the post-professional development prompt. Send follow-up emails within 24 hours. Credibility and recency are at their peak.<br><br><strong>Link:</strong> iste-ascd.org/cls-contact</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note-box">Awareness posts → iste-ascd.org/custom &nbsp;|&nbsp; Consultation-ready posts → iste-ascd.org/cls-contact &nbsp;|&nbsp; Never link to the ISTE+ASCD homepage.</div>
+</div>
+
+<!-- ── 03 PROMPTS ─────────────────────────────────────────────────────── -->
+<div class="section" id="prompts">
+  <div class="section-intro">
+    <div class="section-num">Section 03</div>
+    <div class="section-title">Content Prompts</div>
+    <p class="section-desc">Select your platform and post type, fill in your details, and copy the fully built AI prompt straight into ChatGPT or Claude.</p>
+  </div>
+
+  <div class="platform-toggle-wrap" style="flex-direction:column;gap:14px;align-items:stretch;">
+
+    <!-- Row 1: Post type -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="platform-toggle-label" style="min-width:90px;">Post Type</span>
+      <select id="prompt-type-select" onchange="setPromptType(this.value)" style="flex:1;padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;color:var(--navy);background:var(--white);cursor:pointer;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%230C1F39%22 stroke-width=%221.5%22 fill=%22none%22/></svg>');background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;max-width:360px;">
+        <option value="awareness">Awareness &amp; Demand Generation</option>
+        <option value="thought">Thought Leadership</option>
+        <option value="leadgen">Lead Generation</option>
+        <option value="preservice">Pre-Service</option>
+        <option value="onsite">On-Site</option>
+        <option value="afterservice">After Services</option>
+      </select>
+    </div>
+
+    <!-- Post type summary -->
+    <div id="type-hint" style="font-size:13px;color:var(--gray-600);line-height:1.55;padding:10px 14px;background:var(--light-blue);border-left:3px solid var(--cyan);border-radius:0 6px 6px 0;margin-left:102px;"></div>
+
+    <!-- Divider -->
+    <div style="border-top:1px solid var(--gray-200);margin:2px 0;"></div>
+
+    <!-- Row 2: Platform -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="platform-toggle-label" style="min-width:90px;">Platform</span>
+      <div class="platform-btns">
+        <button class="p-btn active" onclick="setPlatform('linkedin',this)">LinkedIn</button>
+        <button class="p-btn" onclick="setPlatform('x',this)">X</button>
+        <button class="p-btn" onclick="setPlatform('meta',this)">Instagram</button>
+      </div>
+    </div>
+
+    <!-- Platform summary -->
+    <div id="platform-hint" style="font-size:13px;color:var(--gray-600);line-height:1.55;padding:10px 14px;background:var(--gray-100);border-left:3px solid var(--gray-200);border-radius:0 6px 6px 0;margin-left:102px;"></div>
+
+  </div>
+
+  <div class="prompt-card" id="active-prompt-card">
+    <div class="prompt-label"><span class="p-num" id="prompt-type-icon">1</span><span id="prompt-type-title" style="margin-left:8px;">Awareness &amp; Demand Generation</span></div>
+    <div class="fw-head">Answer these questions — your answers build the AI prompt below</div>
+    <div class="fw-fields" id="prompt-fields"></div>
+    <div class="ai-head">AI Prompt — ready to copy into ChatGPT or Claude <button class="copy-btn" onclick="copyOutput('prompt-out',this)">Copy</button></div>
+    <div class="ai-output" id="prompt-out"></div>
+  </div>
+</div>
+
+<!-- ── 04 EMAIL ────────────────────────────────────────────────────────── -->
+<div class="section" id="email">
+  <div class="section-intro">
+    <div class="section-num">Section 04</div>
+    <div class="section-title">Follow-Up Emails</div>
+    <p class="section-desc">Fill in your details and copy the fully built email. Send within 24 hours of your session or engagement.</p>
+  </div>
+
+  <div class="email-scenario-tabs">
+    <button class="e-tab active" onclick="showEmailTab('e-district')">District Leader Follow-Up</button>
+    <button class="e-tab" onclick="showEmailTab('e-teacher')">Teacher / Session Attendee</button>
+  </div>
+
+  <!-- District Leader Email -->
+  <div class="email-scenario active" id="e-district">
+    <div class="card">
+      <div class="email-head">
+        <span class="email-title">District Leader Follow-Up</span>
+        <button class="copy-btn" onclick="copyOutput('e1_out',this)">Copy email</button>
+      </div>
+      <div class="email-fields">
+        <div class="fw-field">
+          <label><span>Where did you connect?</span></label>
+          <textarea id="e1_f1" placeholder="e.g. ISTE conference, a site visit, a regional leadership event..." oninput="buildEmail(1)" rows="2"></textarea>
+        </div>
+        <div class="fw-field">
+          <label><span>What specific topic did you discuss?</span></label>
+          <textarea id="e1_f2" placeholder="e.g. AI readiness, building teacher confidence before tool adoption, differentiated instruction..." oninput="buildEmail(1)" rows="2"></textarea>
+        </div>
+        <div class="fw-field">
+          <label><span>Optional: proof point or result you can reference</span></label>
+          <textarea id="e1_f3" placeholder="e.g. Southfield Public Schools — Academic State Champions after a four-year partnership with 91% graduation rate..." oninput="buildEmail(1)" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="email-output-wrap">
+        <div class="email-output" id="e1_out"></div>
+      </div>
+      <div class="note-box" style="margin:0 20px 16px;border-radius:0 8px 8px 0">Flag any reply to Joe Burns. Do not respond to scope, pricing, or timeline questions directly.</div>
+    </div>
+  </div>
+
+  <!-- Teacher Email -->
+  <div class="email-scenario" id="e-teacher">
+    <div class="card">
+      <div class="email-head navy-bg">
+        <span class="email-title">Teacher / Session Attendee Follow-Up</span>
+        <button class="copy-btn" onclick="copyOutput('e2_out',this)">Copy email</button>
+      </div>
+      <div class="email-fields">
+        <div class="fw-field">
+          <label><span>What was your session topic?</span></label>
+          <textarea id="e2_f1" placeholder="e.g. AI readiness for classroom teachers, differentiated instruction strategies..." oninput="buildEmail(2)" rows="2"></textarea>
+        </div>
+        <div class="fw-field">
+          <label><span>Resource or link #1 to share</span></label>
+          <textarea id="e2_f2" placeholder="e.g. ISTE+ASCD AI readiness guide — iste-ascd.org/..." oninput="buildEmail(2)" rows="2"></textarea>
+        </div>
+        <div class="fw-field">
+          <label><span>Resource or link #2 (optional)</span></label>
+          <textarea id="e2_f3" placeholder="e.g. Nascimento blog on AI confidence building — iste-ascd.org/..." oninput="buildEmail(2)" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="email-output-wrap">
+        <div class="email-output" id="e2_out"></div>
+      </div>
+      <div class="note-box" style="margin:0 20px 16px;border-radius:0 8px 8px 0">The Custom Learning Services mention is intentionally light. If a teacher forwards this to a principal or curriculum director, the link is already there.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 05 BRAND KIT ────────────────────────────────────────────────────── -->
+<div class="section" id="brand">
+  <div class="section-intro">
+    <div class="section-num">Section 05</div>
+    <div class="section-title">Brand Kit</div>
+    <p class="section-desc">When creating graphics or visuals for social posts, use these elements. Download the full ISTE+ASCD Brand Guide from the shared assets folder for complete guidelines.</p>
+  </div>
+
+  <div class="subhead">Brand Colors</div>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#0B2589"></div><div class="swatch-info"><div class="swatch-name">Deep Blue</div><div class="swatch-hex">#0B2589</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#28A8D4"></div><div class="swatch-info"><div class="swatch-name">Cyan Blue</div><div class="swatch-hex">#28A8D4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#BFE5F1;border-bottom:1px solid #ccc"></div><div class="swatch-info"><div class="swatch-name">Light Blue</div><div class="swatch-hex">#BFE5F1</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0C1F39"></div><div class="swatch-info"><div class="swatch-name">Dark Navy</div><div class="swatch-hex">#0C1F39</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FAA73D"></div><div class="swatch-info"><div class="swatch-name">Orange</div><div class="swatch-hex">#FAA73D</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fff;border-bottom:1px solid #ccc"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div></div>
+  </div>
+
+  <hr class="divider">
+  <div class="subhead">Typography</div>
+  <div class="font-grid">
+    <div class="font-card"><div class="font-card-name">Poppins</div><div class="font-card-use">Primary brand font. Headers, subtitles, body copy, captions.</div><a class="font-card-link" href="https://fonts.google.com/specimen/Poppins" target="_blank">Download free from Google Fonts →</a></div>
+    <div class="font-card"><div class="font-card-name">Literata</div><div class="font-card-use">Pull quotes, accent text, special highlights.</div><a class="font-card-link" href="https://fonts.google.com/specimen/Literata" target="_blank">Download free from Google Fonts →</a></div>
+    <div class="font-card"><div class="font-card-name">Arial / Georgia</div><div class="font-card-use">Fallback if Poppins or Literata unavailable. Pre-installed on all devices.</div><span class="font-card-link">Pre-installed</span></div>
+  </div>
+
+  <hr class="divider">
+  <div class="subhead">Hashtag Bank</div>
+  <p style="font-size:13px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6">Use 3-5 per post on LinkedIn and Instagram. On X, use 1-2 max. Always include #ISTE2026 when posting during the conference.</p>
+  <div class="hashtag-grid">
+    <div class="hashtag-group"><h4>Conference</h4><span class="hashtag-pill">#ISTE2026</span><span class="hashtag-pill">#EdLeadership</span><span class="hashtag-pill">#ISTEplus</span></div>
+    <div class="hashtag-group"><h4>Content Area</h4><span class="hashtag-pill">#AIinEducation</span><span class="hashtag-pill">#ProfessionalLearning</span><span class="hashtag-pill">#Edtech</span><span class="hashtag-pill">#DifferentiatedInstruction</span><span class="hashtag-pill">#CurriculumDesign</span><span class="hashtag-pill">#DistrictLeaders</span></div>
+    <div class="hashtag-group"><h4>Brand</h4><span class="hashtag-pill">#ASCD</span><span class="hashtag-pill">#TeacherDevelopment</span><span class="hashtag-pill">#LearnerVariability</span></div>
+  </div>
+
+  <hr class="divider">
+  <div class="subhead">Assets & Logos</div>
+  <div class="note-box">Download official logos, brand assets, and approved image templates: <a href="https://drive.google.com/drive/folders/1hXoyxe2y8Sjkt3BPv6vYGOzxX4mTVzom" target="_blank" style="color:var(--deep-blue);font-weight:600;">ISTE+ASCD Assets Folder →</a> &nbsp;|&nbsp; If you are unsure whether a graphic is on-brand, send it to Joe Burns before posting.</div>
+  <ul style="margin-top:1rem;list-style:none;display:flex;flex-direction:column;gap:8px">
+    <li style="font-size:13px;color:var(--gray-600);display:flex;gap:10px"><span style="color:var(--cyan);font-weight:700;flex-shrink:0">→</span>Always use the color logo on white or light backgrounds.</li>
+    <li style="font-size:13px;color:var(--gray-600);display:flex;gap:10px"><span style="color:var(--cyan);font-weight:700;flex-shrink:0">→</span>Use the white logo on dark navy, deep blue, or photo backgrounds.</li>
+    <li style="font-size:13px;color:var(--gray-600);display:flex;gap:10px"><span style="color:var(--cyan);font-weight:700;flex-shrink:0">→</span>Never distort, recolor, or re-create the logo in another typeface.</li>
+    <li style="font-size:13px;color:var(--gray-600);display:flex;gap:10px"><span style="color:var(--cyan);font-weight:700;flex-shrink:0">→</span>Minimum logo size: 100px wide for digital, 1 inch wide for print.</li>
+  </ul>
+</div>
+
+<!-- ── APPENDIX ────────────────────────────────────────────────────────── -->
+<div class="section" id="appendix">
+  <div class="section-intro">
+    <div class="section-num">Appendix A</div>
+    <div class="section-title">Exemplars & Reference</div>
+    <p class="section-desc">Polished examples and a good/bad reference. Use these as benchmarks for tone, length, and structure.</p>
+  </div>
+
+  <div class="subhead">Good Post vs. Avoid This</div>
+  <div class="dodont-grid">
+    <div class="dd-col good">
+      <h4>Write this</h4>
+      <div class="dd-item">"Spent the morning with 40 teachers who were frustrated by AI, not excited about it. That is exactly where good implementation starts."</div>
+      <div class="dd-item">"The districts that see lasting change are not the ones that attended the most workshops. They are the ones that committed to the work over time."</div>
+      <div class="dd-item">"One question kept coming up in our session today: how do you build teacher confidence before you introduce new tools? That question is the whole ballgame."</div>
+    </div>
+    <div class="dd-col bad">
+      <h4>Avoid this</h4>
+      <div class="dd-item">"So excited to be at ISTE! What a transformational experience empowering educators with practical AI resources!"</div>
+      <div class="dd-item">"Join us at ISTE and discover the practical frameworks that will empower your team to take learning to the next level!"</div>
+      <div class="dd-item">"In today's rapidly changing world, educators need resources and practical strategies to join the movement and empower their students."</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="subhead">Social Post Exemplars</div>
+
+  <div class="exemplar-card">
+    <div class="ex-head blue"><span class="ex-type">LinkedIn · Awareness</span><button class="copy-btn" onclick="copyEl('ex1',this)">Copy</button></div>
+    <div class="ex-body" id="ex1">Most districts start with the wrong question.
+
+They ask: "Which AI tools should we adopt?" The better question is: "What do our teachers need to feel confident enough to try?"
+
+Confidence is not a mindset intervention. It is a design problem. Teachers do not resist technology because they do not understand it. They resist it when adoption threatens their professional identity and no one has built a bridge.
+
+That bridge is what sustained professional learning builds. Not a one-day workshop on prompting. A structured, supported progression from awareness to application to fluency.
+
+ISTE+ASCD's Custom Learning Services works with districts on exactly that progression. iste-ascd.org/custom</div>
+    <div class="ex-note">~130 words. No hard CTA. Leads with the tension that resonates most with instructional leaders.</div>
+  </div>
+
+  <div class="exemplar-card">
+    <div class="ex-head navy"><span class="ex-type">LinkedIn · Lead Generation</span><button class="copy-btn" onclick="copyEl('ex2',this)">Copy</button></div>
+    <div class="ex-body" id="ex2">Four years ago, Southfield Public Schools was rebuilding.
+
+Not from a crisis. From a decision to stop relying on one-off trainings and to start building the kind of instructional capacity that lasts.
+
+Four years later, they are Academic State Champions with a 91% graduation rate.
+
+That is what a sustained partnership looks like in practice.
+
+If your district is at that decision point right now, I would welcome a 15-minute conversation. iste-ascd.org/cls-contact</div>
+    <div class="ex-note">~90 words. Leads with proof, ends with a low-friction CTA.</div>
+  </div>
+
+  <div class="exemplar-card">
+    <div class="ex-head light"><span class="ex-type">X · On-Site</span><button class="copy-btn" onclick="copyEl('ex3',this)">Copy</button></div>
+    <div class="ex-body" id="ex3">On-site in [City] today working with a team of 35 teachers on AI readiness.
+
+The question that came up more than any other: "How do I explain this to parents?"
+
+That is not a communications problem. It is a trust problem. And it is exactly the right place to start.
+
+iste-ascd.org/custom</div>
+    <div class="ex-note">~65 words. Real, specific, in-the-moment. The observation does the work.</div>
+  </div>
+
+  <div class="exemplar-card">
+    <div class="ex-head gray"><span class="ex-type">LinkedIn · Post-Professional Development</span><button class="copy-btn" onclick="copyEl('ex4',this)">Copy</button></div>
+    <div class="ex-body" id="ex4">Wrapped up a three-day engagement with [District Name] last week.
+
+When we started, the conversation was about tools. By day two, it had shifted entirely to trust: trust between teachers and administrators, trust in the change process, trust in their own professional judgment.
+
+That shift is what makes everything else possible. You cannot install it. You have to build it.
+
+If your district is starting that conversation, our team at ISTE+ASCD would be glad to be part of it. iste-ascd.org/cls-contact</div>
+    <div class="ex-note">~105 words. Replace [District Name] if you have permission to use it.</div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ── PLATFORM ──────────────────────────────────────────────────────────────
+let platform = 'linkedin';
+
+const platformHints = {
+  linkedin: '<strong>LinkedIn:</strong> 180–260 words. Short paragraphs, no bullet points. First sentence must stop a scroll — it appears before "see more." End with a single CTA link.',
+  x: '<strong>X:</strong> Write a tight 3-post thread. First post under 270 characters, works standalone. Posts 2–3 add texture. Final post carries the CTA. No hashtags in the body.',
+  meta: '<strong>Instagram:</strong> 120–180 words. First line must hook before the "more" cutoff. Warmer and more visual than LinkedIn. End with "Link in bio." rather than a full URL.'
+};
+
+const typeHints = {
+  awareness:    '<strong>Awareness &amp; Demand Generation:</strong> Builds recognition of Custom Learning Services without pitching it directly. Leads with a problem or tension you are seeing in districts. Custom Learning Services appears as a natural, credible endpoint.',
+  thought:      '<strong>Thought Leadership:</strong> Amplifies your expertise and ideas. Use for a podcast appearance, blog post, book, speaking engagement, or a strong original point of view. The idea leads — the promotional context follows.',
+  leadgen:      '<strong>Lead Generation:</strong> Moves district leaders toward a 15-minute consultation. Leads with a proof point or result. The CTA is always low-friction: schedule a short conversation at iste-ascd.org/cls-contact.',
+  preservice:   '<strong>Pre-Service:</strong> Posted before you deliver an engagement. Communicates what you are preparing for, the problem being solved, and the expertise you bring. Energized and purposeful in tone.',
+  onsite:       '<strong>On-Site:</strong> Posted while you are actively delivering professional development. Captures a real, specific moment from the room — a question, an observation, a realization. Immediate and authentic.',
+  afterservice: '<strong>After Services:</strong> Posted after completing an engagement. Reflective, energized, and human. Leads with a specific story or aha moment. Includes your personal why. Optional mention of continued work.',
+};
+
+const platformLabels = { linkedin: 'LinkedIn', x: 'X', meta: 'Instagram' };
+
+function setPlatform(p, btn) {
+  platform = p;
+  document.querySelectorAll('.p-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('platform-hint').innerHTML = platformHints[p];
+  buildCurrentPrompt();
+}
+
+// ── TAB NAVIGATION ────────────────────────────────────────────────────────
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showEmailTab(id) {
+  document.querySelectorAll('.email-scenario').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.e-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── COPY ──────────────────────────────────────────────────────────────────
+function copyOutput(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.innerText || el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = btn.dataset.label||'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+function copyEl(id, btn) { copyOutput(id, btn); }
+
+// ── PROMPT ENGINE ────────────────────────────────────────────────────────
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function escVal(v, fallback) {
+  const s = v || fallback;
+  return escHtml(s);
+}
+
+function hiSpan(v, fallback) {
+  return v
+    ? `<span class="user-val">${escHtml(v)}</span>`
+    : `<span style="color:var(--gray-400);font-style:italic">${fallback}</span>`;
+}
+
+let promptType = 'awareness';
+
+const promptMeta = {
+  awareness:    { icon: '◎', title: 'Awareness & Demand Generation' },
+  thought:      { icon: '💡', title: 'Thought Leadership' },
+  leadgen:      { icon: '→', title: 'Lead Generation' },
+  preservice:   { icon: '▷', title: 'Pre-Service' },
+  onsite:       { icon: '📍', title: 'On-Site' },
+  afterservice: { icon: '✦', title: 'After Services' },
+};
+
+const promptFields = {
+  awareness: [
+    { id:'a_f1', label:'What is your content area or topic?', ph:'e.g. AI literacy, differentiated instruction, leadership development...' },
+    { id:'a_f2', label:'What pattern or tension are you seeing in districts right now?', ph:'e.g. Teachers are being asked to adopt AI tools before they have the confidence to use them...' },
+    { id:'a_f3', label:'What is the one thing you want someone to understand about this kind of professional development?', ph:'e.g. Sustainable change requires sustained support, not a single workshop...' },
+    { id:'a_f4', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. I have been doing this work for 15 years and the districts that struggle most skip the trust-building phase...', rows:3 },
+  ],
+  thought: [
+    { id:'t_f1', label:'What is the thought leadership context?', ph:'e.g. I was just on the EdLeaders podcast, I wrote a blog for ASCD, I am speaking at a regional conference, I have a new book coming out...' },
+    { id:'t_f2', label:'What is the core idea or argument you want to share?', ph:'e.g. AI readiness is not a technology problem — it is a professional identity problem...' },
+    { id:'t_f3', label:'Why does this idea matter to district leaders right now?', ph:'e.g. Most districts are about to make expensive implementation decisions based on incomplete thinking...' },
+    { id:'t_f4', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. Link to the podcast episode, article, or event registration...', rows:3 },
+  ],
+  leadgen: [
+    { id:'l_f1', label:'Who specifically are you trying to reach?', ph:'e.g. Superintendents and curriculum directors in mid-size districts...' },
+    { id:'l_f2', label:'What is the one reason they should have a 15-minute conversation?', ph:'e.g. To understand what a multi-year partnership actually looks like before committing to anything...' },
+    { id:'l_f3', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. I recently completed a three-year engagement in Texas focused on AI readiness — student outcomes improved significantly in the second year...', rows:3 },
+  ],
+  preservice: [
+    { id:'ps_f1', label:'What are you preparing for?', ph:'e.g. A three-day differentiated instruction workshop with 80 teachers in a Title I district next week...' },
+    { id:'ps_f2', label:'What problem or challenge is this work designed to address?', ph:'e.g. Teachers are being asked to differentiate instruction without ever having been taught how to assess for student readiness...' },
+    { id:'ps_f3', label:'What expertise or perspective do you bring to this work?', ph:'e.g. I have spent 20 years working alongside Carol Ann Tomlinson on DI implementation in high-need districts...' },
+    { id:'ps_f4', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. This is the start of a two-year engagement — we are building something that will outlast the professional development itself...', rows:3 },
+  ],
+  onsite: [
+    { id:'os_f1', label:'What topic or content area are you delivering today?', ph:'e.g. AI readiness, differentiated instruction, curriculum design...' },
+    { id:'os_f2', label:'What happened in the room that surprised you or confirmed something you believe?', ph:'e.g. Teachers kept asking how to explain AI to parents — that is a trust problem, not a communications problem...' },
+    { id:'os_f3', label:'Any additional information you feel would help guide the post or feel is important?', ph:'e.g. This is a Title I district, 800 teachers, day one of a three-day engagement...', rows:3 },
+  ],
+  afterservice: [
+    { id:'as_f1', label:'What was this engagement focused on?', ph:'e.g. Three-day AI readiness workshop series with 60 teachers across two campuses...' },
+    { id:'as_f2', label:'Share a specific story, aha moment, or experience someone had during the engagement.', ph:'e.g. On day two a veteran teacher of 22 years said she finally felt like she had permission to try something new — that she did not have to have all the answers before she started...' },
+    { id:'as_f3', label:'How does this work connect to why you do what you do? What makes it meaningful?', ph:'e.g. I got into this work because I watched teachers in my own district burn out trying to meet student needs without the right support. That is what this is really about...' },
+    { id:'as_f4', label:'Optional: anything to mention about continued or ongoing work with this district?', ph:'e.g. We will be returning in the spring to build on this foundation — the district has committed to a two-year partnership...', rows:3 },
+  ],
+};
+
+const CLS_CONTEXT = `ABOUT THE ORGANIZATION AND OFFER:
+ISTE+ASCD is the combined organization of the International Society for Technology in Education (ISTE) and ASCD. Together, they bring Edtech leadership and instructional excellence under one roof. ISTE+ASCD's Custom Learning Services is a customized, district-level professional development partnership. It is not a course catalog or a training vendor. It is a multi-year partnership built around a specific district's goals through a discovery-led process. Every engagement is 100% custom — expert-facilitated by renowned practitioners, delivered in-person or virtually, designed to go from policy to classroom practice. Tagline: "Unleash their potential. Deliver results." One-liner: "Professional learning should never be 'one and done.' Our expert faculty will carefully analyze your needs to plan and deliver a customized learning program tailored to your goals." Partnership framing: "Delivered by renowned practitioners, our work doesn't stop at a single training. We build alongside your team from policy to practice, and stay the course."
+
+PROOF POINT — SOUTHFIELD PUBLIC SCHOOLS:
+Southfield Public Schools partnered with ASCD on a multi-year differentiated instruction engagement. Result: 91% graduation rate and Academic State Champions recognition. Four-year partnership. A district rebuilt from the ground up. Reference when relevant.
+
+WHO BUYS THIS:
+The buyer is a district leader — superintendent, curriculum director, instructional leader, or building principal with district backing. Senior, experienced, skeptical of vendors. They have seen one-time trainings fail. They want a partner, not a provider. They do not want to be sold to. They want to be understood.
+
+THE MARKETING GOAL:
+The goal of every post is to sell the conversation, not the program. The CTA is always low-friction: reply, schedule a 15-minute consultation, or start a conversation. Awareness posts link to iste-ascd.org/custom. Consultation-ready posts link to iste-ascd.org/cls-contact.
+
+VOICE AND TONE:
+Write as a thoughtful, senior practitioner with deep subject matter expertise — not as a brand or marketing function. Peer-level, intelligent, direct. Never promotional, never corporate, never generic. Posts should feel like something a respected colleague would share.
+
+CORE COPY RULES — APPLY ALL WITHOUT EXCEPTION:
+- Lead with the problem, not the solution. The district's tension comes first. Custom Learning Services comes second or not at all.
+- Be specific. Name real numbers, real situations, real observations.
+- Write from a partnership lens. "We build alongside your team" not "our program offers."
+- One idea per post. Do not combine awareness and a consultation ask.
+- Spell out "Custom Learning Services" on first reference — never "CLS."
+- Limit em dashes. Use a comma or period instead.
+- Do not open with a rhetorical question. State the idea directly.
+- Do not use "transformational," "empower," "innovative," or "game-changer."
+- Do not use AI-pattern constructions like "Whether you are X or Y."
+- Do not use passive benefit openers like "You will walk away with..."`;
+
+const platformSpec = {
+  linkedin: `PLATFORM — LINKEDIN:
+180–260 words. Short punchy paragraphs of 1–3 sentences. No bullet points. No headers. First sentence must stop a scroll — it appears before "see more" and is the only sentence guaranteed to be read. End with a single CTA link. No hashtags.`,
+  x: `PLATFORM — X (FORMERLY TWITTER):
+Write a tight 3-post thread. First post under 270 characters, works as a standalone observation. Posts 2–3 add texture and implication. Final post carries the CTA. No hashtags in the body.`,
+  meta: `PLATFORM — INSTAGRAM:
+120–180 words. First line must be compelling before the "more" cutoff. Slightly warmer and more human than LinkedIn — still intelligent and peer-level. Feel like a window into the room. End with "Link in bio." rather than a full URL.`
+};
+
+const warmToneNote = `TONE NOTE FOR THIS POST TYPE:
+This post can be warmer and more personal than standard B2B copy. One exclamation point is acceptable if it reflects genuine enthusiasm. Write with human energy — this is a practitioner who loves this work and is not afraid to show it. Still no filler phrases, no corporate-speak, no generic claims.`;
+
+const standardToneNote = `TONE NOTE:
+No exclamation points. Confident and peer-level, not promotional. The voice is warm but measured — a respected practitioner, not an excited brand.`;
+
+function buildCurrentPrompt() {
+  const pl = platformLabels[platform];
+  const pSpec = platformSpec[platform];
+  const fields = promptFields[promptType];
+  const vals = {};
+  fields.forEach(f => { vals[f.id] = val(f.id); });
+
+  const na = '[not yet filled in — add above for a stronger prompt]';
+  const none = '[none provided]';
+
+  let taskBlock = '';
+  let inputBlock = 'AUTHOR\'S INPUTS — USE THESE TO MAKE THE POST SPECIFIC AND GROUNDED:\n';
+  let outputBlock = `OUTPUT INSTRUCTIONS:\nWrite only the finished post — no preamble, no explanation, no options. Do not include hashtags.`;
+  let toneNote = standardToneNote;
+
+  if (promptType === 'awareness') {
+    taskBlock = `YOUR TASK — AWARENESS & DEMAND GENERATION POST:\nWrite a ${pl} post that builds awareness of ISTE+ASCD's Custom Learning Services without pitching it directly. Establish the author as a credible, thoughtful practitioner and plant the idea that sustained professional learning partnership — not one-time training — is the right model. Custom Learning Services should appear as a natural endpoint, not the focus.`;
+    inputBlock += `Content area or topic: ${vals.a_f1||na}\nPattern or tension in districts right now: ${vals.a_f2||na}\nThe one thing to understand about this kind of professional development: ${vals.a_f3||na}\nAdditional context: ${vals.a_f4||none}`;
+    outputBlock += ` If inputs are specific, use them as the foundation. If vague, write the strongest post using available context and flag what the author should personalize.`;
+  } else if (promptType === 'thought') {
+    taskBlock = `YOUR TASK — THOUGHT LEADERSHIP POST:\nWrite a ${pl} post that amplifies the author's thought leadership and establishes their expertise with district leaders and education professionals. This post may promote a podcast appearance, blog post, article, book, speaking engagement, or original idea. The content should lead with the core idea or argument — not the promotional context. The promotional context (the podcast, the event, the book) is the proof of credibility, not the headline.`;
+    inputBlock += `Thought leadership context (podcast, blog, speaking, book, idea): ${vals.t_f1||na}\nCore idea or argument: ${vals.t_f2||na}\nWhy this matters to district leaders right now: ${vals.t_f3||na}\nAdditional context or links: ${vals.t_f4||none}`;
+    outputBlock += ` Lead with the idea, not the promotional context. The promotional detail (episode link, event, book) should appear as a natural bridge, not the headline. Make the reader feel like they are encountering a serious thinker, not a self-promoter.`;
+  } else if (promptType === 'leadgen') {
+    taskBlock = `YOUR TASK — LEAD GENERATION POST:\nWrite a ${pl} post aimed at district leaders — superintendents, curriculum directors, instructional leaders — that moves them toward scheduling a 15-minute consultation with the ISTE+ASCD Custom Learning Services team. Lead with something specific — a result, an observation, a reframe. Make the next step feel obvious and low-risk. CTA: iste-ascd.org/cls-contact.\n\nSOUTHFIELD PROOF POINT — USE IF RELEVANT:\nSouthfield Public Schools: 91% graduation rate, Academic State Champions, four-year partnership. Draw on this if the author's inputs don't provide their own proof point.`;
+    inputBlock += `The audience I am most trying to reach: ${vals.l_f1||na}\nThe one reason they should take 15 minutes: ${vals.l_f2||na}\nAdditional context or proof points: ${vals.l_f3||none}`;
+    outputBlock += ` Lead with a specific result or observation — not the product. If the author's additional context contains a proof point, lead with that. Otherwise draw on Southfield.`;
+  } else if (promptType === 'preservice') {
+    toneNote = warmToneNote;
+    taskBlock = `YOUR TASK — PRE-SERVICE POST:\nWrite a ${pl} post from a faculty member who is preparing to deliver a professional development engagement. The tone should feel energized and purposeful — this is a practitioner who is genuinely invested in the work ahead. The post should communicate what they are preparing for, the problem they are working to solve, and the expertise they bring to it. It is not a logistics announcement. It is an expression of professional purpose and anticipation.`;
+    inputBlock += `What I am preparing for: ${vals.ps_f1||na}\nThe problem or challenge this work is designed to address: ${vals.ps_f2||na}\nThe expertise or perspective I bring: ${vals.ps_f3||na}\nAdditional context: ${vals.ps_f4||none}`;
+    outputBlock += ` The post should feel warm, energized, and human. Lead with the problem being solved or the work being done — not the logistics. Express genuine investment in the outcome. Custom Learning Services or ISTE+ASCD can be mentioned lightly at the end.`;
+  } else if (promptType === 'onsite') {
+    taskBlock = `YOUR TASK — ON-SITE POST (WHILE DELIVERING PROFESSIONAL DEVELOPMENT):\nWrite a ${pl} post that captures a real, specific moment from an active professional development session. The author is on-site right now. This post is about what is happening in the room — a question that came up, an observation about where teachers actually are, a realization that reframes the challenge. Immediate and authentic. The post does not need to mention Custom Learning Services prominently. A light CTA to iste-ascd.org/custom at the end is appropriate.`;
+    inputBlock += `Topic or content area being delivered: ${vals.os_f1||na}\nThe moment, question, or observation that stood out: ${vals.os_f2||na}\nAdditional context: ${vals.os_f3||none}`;
+    outputBlock += ` Lead with the observation — not a setup, not a question. The more specific and unexpected the detail, the stronger the post. Let the observation do the work. Resist the urge to explain or moralize.`;
+  } else if (promptType === 'afterservice') {
+    toneNote = warmToneNote;
+    taskBlock = `YOUR TASK — AFTER SERVICES POST:\nWrite a ${pl} post from a faculty member who has just completed a professional development engagement. This post should feel energized and reflective — not a formal recap, but a practitioner's genuine response to meaningful work. It should include a specific story, moment, or aha someone had during the engagement. It should reflect on why this work matters to the author personally. If there is continued or ongoing work to mention, it can appear as a light, natural close — not a sales pitch.`;
+    inputBlock += `What this engagement was focused on: ${vals.as_f1||na}\nA specific story, aha moment, or experience someone had: ${vals.as_f2||na}\nWhy this work is personally meaningful to me: ${vals.as_f3||na}\nOptional — anything about continued or ongoing work: ${vals.as_f4||none}`;
+    outputBlock += ` Lead with the specific story or moment — not a general statement about the work. Let the human detail carry the emotional weight. The author's personal reflection should feel genuine, not performed. If continued work is mentioned, keep it brief and natural — one sentence at most.`;
+  }
+
+  const raw = `${CLS_CONTEXT}\n\n${pSpec}\n\n${toneNote}\n\n${taskBlock}\n\n${inputBlock}\n\n${outputBlock}`;
+
+  // Build highlighted HTML version
+  let html = escHtml(raw);
+  fields.forEach(f => {
+    const v = vals[f.id];
+    const fallback = f.id.endsWith('f4') && (promptType === 'afterservice') ? none : (f.id.endsWith('f4') || f.id.endsWith('f3') && promptType === 'leadgen' ? none : na);
+    const used = v || fallback;
+    html = html.replaceAll(escHtml(used), hiSpan(v, fallback));
+  });
+
+  document.getElementById('prompt-out').innerHTML = html;
+}
+
+function setPromptType(type) {
+  promptType = type;
+  const meta = promptMeta[type];
+  document.getElementById('prompt-type-icon').textContent = meta.icon;
+  document.getElementById('prompt-type-title').textContent = meta.title;
+  document.getElementById('type-hint').innerHTML = typeHints[type];
+
+  const container = document.getElementById('prompt-fields');
+  const fields = promptFields[type];
+  container.innerHTML = fields.map((f, i) => `
+    <div class="fw-field">
+      <label><span>${i+1}.</span> ${f.label}</label>
+      <textarea id="${f.id}" placeholder="${f.ph}" oninput="buildCurrentPrompt()" rows="${f.rows||2}"></textarea>
+    </div>`).join('');
+
+  buildCurrentPrompt();
+}
+
+
+// ── EMAIL BUILDER ─────────────────────────────────────────────────────────
+function buildEmail(n) {
+  if (n === 1) {
+    const where = val('e1_f1'), topic = val('e1_f2'), proof = val('e1_f3');
+    const whereStr = where || '[where you connected]';
+    const topicStr = topic || '[topic you discussed]';
+    const proofBlock = proof
+      ? `\nOne example worth sharing: ${proof}\n\nThat is the kind of outcome Custom Learning Services is built to support.\n`
+      : '\n';
+    const text = `Subject: Following up from ${whereStr}\n\nIt was good to connect at ${whereStr}. The conversation we had about ${topicStr} is one that keeps coming up across districts right now, and the ones moving farthest forward are the ones that have committed to sustained work rather than isolated training.\n${proofBlock}\nThat is what ISTE+ASCD's Custom Learning Services is designed for. We work with districts to build professional learning programs that are customized to your goals, led by practitioners with deep subject matter expertise, and built to last beyond a single engagement.\n\nIf you would like to explore what that could look like for your district, the best next step is a short conversation with our team: iste-ascd.org/cls-contact\n\n[Your name]\n[Title], ISTE+ASCD`;
+    const el = document.getElementById('e1_out');
+    el.innerHTML = escHtml(text)
+      .replaceAll(escHtml(whereStr), where ? `<span class="user-val">${escHtml(where)}</span>` : '<span style="color:var(--gray-400);font-style:italic">[where you connected]</span>')
+      .replaceAll(escHtml(topicStr), topic ? `<span class="user-val">${escHtml(topic)}</span>` : '<span style="color:var(--gray-400);font-style:italic">[topic you discussed]</span>');
+    if (proof) el.innerHTML = el.innerHTML.replace(escHtml(proof), `<span class="user-val">${escHtml(proof)}</span>`);
+  }
+
+  if (n === 2) {
+    const topic = val('e2_f1'), r1 = val('e2_f2'), r2 = val('e2_f3');
+    const topicStr = topic || '[your session topic]';
+    const r1Str = r1 || '[resource link 1]';
+    const r2Block = r2 ? `${r2}\n` : '';
+    const text = `Subject: Resources from our session\n\nThank you for being part of the session on ${topicStr}. The questions in the room were exactly the kind of thinking that makes this work meaningful.\n\nA few things to take with you:\n\n${r1Str}\n${r2Block}\nIf questions come up as you apply this in your classroom or school, feel free to reach out directly. And if your district leadership is interested in a more sustained partnership, the starting point is always a conversation: iste-ascd.org/cls-contact\n\n[Your name]\n[Title], ISTE+ASCD`;
+    const el = document.getElementById('e2_out');
+    el.innerHTML = escHtml(text)
+      .replaceAll(escHtml(topicStr), topic ? `<span class="user-val">${escHtml(topic)}</span>` : '<span style="color:var(--gray-400);font-style:italic">[your session topic]</span>')
+      .replaceAll(escHtml(r1Str), r1 ? `<span class="user-val">${escHtml(r1)}</span>` : '<span style="color:var(--gray-400);font-style:italic">[resource link 1]</span>');
+    if (r2) el.innerHTML = el.innerHTML.replace(escHtml(r2), `<span class="user-val">${escHtml(r2)}</span>`);
+  }
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+setPromptType('awareness');
+document.getElementById('platform-hint').innerHTML = platformHints['linkedin'];
+buildEmail(1);
+buildEmail(2);
+</script>
+</body>
+</html>
